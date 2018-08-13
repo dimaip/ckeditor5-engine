@@ -93,7 +93,7 @@ function selectionPostFixer( writer, model ) {
 	// If any of ranges were corrected update the selection.
 	if ( wasFixed ) {
 		// TODO: detect intersecting ranges and fix them.
-		writer.setSelection( ranges, { backward: selection.isBackward } );
+		// writer.setSelection( ranges, { backward: selection.isBackward } );
 	}
 }
 
