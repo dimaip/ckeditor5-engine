@@ -92,20 +92,8 @@ function selectionPostFixer( writer, model ) {
 
 	// If any of ranges were corrected update the selection.
 	if ( wasFixed ) {
-		// The above algorithm might create ranges that intersects each other when selection contains more then one range.
-		// This is case happens mostly on Firefox which creates multiple ranges for selected table.
-		let fixedRanges = ranges;
-
-		// Fixing selection with many ranges usually breaks the selection in Firefox. As only Firefox supports multiple selection ranges
-		// we simply create one continuous range from fixed selection ranges (even if they are not adjacent).
-		if ( ranges.length > 1 ) {
-			const selectionStart = ranges[ 0 ].start;
-			const selectionEnd = ranges[ ranges.length - 1 ].end;
-
-			fixedRanges = [ new Range( selectionStart, selectionEnd ) ];
-		}
-
-		writer.setSelection( fixedRanges, { backward: selection.isBackward } );
+		// TODO: detect intersecting ranges and fix them.
+		writer.setSelection( ranges, { backward: selection.isBackward } );
 	}
 }
 
